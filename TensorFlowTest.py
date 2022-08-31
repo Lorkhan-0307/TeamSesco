@@ -16,4 +16,4 @@ print(b)
 print(a*b)
 
 c = np.multiply(a, b)
-print(c)print(c)print(c)
+print(c)
