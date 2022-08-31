@@ -3,7 +3,8 @@ import numpy as np
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 import cProfile
-
+"""주석 처리 테스트"""
+#한줄짜리 주석 테스트
 a = tf.constant([[1, 2],
                  [3, 4]])
 
