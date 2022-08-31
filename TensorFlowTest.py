@@ -14,5 +14,5 @@ print(a)
 print(b)
 print(a*b)
 
-c = np.multiply(a,b)
+c = np.multiply(a, b)
 print(c)
