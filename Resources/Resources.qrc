@@ -1,7 +1,0 @@
-<RCC>
-  <qresource prefix="icon">
-    <file>Camera.png</file>
-    <file>Folder.png</file>
-    <file>Video.png</file>
-  </qresource>
-</RCC>
