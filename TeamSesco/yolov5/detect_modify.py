@@ -1,4 +1,7 @@
 # YOLOv5 🚀 by Ultralytics, GPL-3.0 license
+
+# -*- coding: utf-8 -*-
+
 """
 Run YOLOv5 detection inference on images, videos, directories, globs, YouTube, webcam, streams, etc.
 
@@ -49,6 +52,10 @@ if str(ROOT) not in sys.path:
     sys.path.append(str(ROOT))  # add ROOT to PATH
 ROOT = Path(os.path.relpath(ROOT, Path.cwd()))  # relative
 
+ROOT2 = os.getcwd()
+sound_path = ROOT2 + '/data/SoundSample/'
+
+
 from models.common import DetectMultiBackend
 from utils.dataloaders import IMG_FORMATS, VID_FORMATS, LoadImages, LoadScreenshots, LoadStreams
 from utils.general import (LOGGER, Profile, check_file, check_img_size, check_imshow, check_requirements, colorstr, cv2,
@@ -57,9 +64,11 @@ from utils.plots import Annotator, colors, save_one_box
 from utils.torch_utils import select_device, smart_inference_mode
 
 def basesoundplay(sound):
-    threading.Thread(target=playsound, args=(f'C:/Users/Public/Capstone_AIHackathon/SoundSample/{sound}.mp3',),daemon=True).start()
+    playsound(sound_path+f'{sound}.mp3')
 def soundplay(sound):
-    threading.Thread(target=playsound, args=(f'C:/Users/Public/Capstone_AIHackathon/SoundSample/TTS/{sound}.mp3',), daemon=True).start()
+    threading.Thread(target=playsound, args=(sound_path + f'TTS/{sound}.mp3',), daemon=True).start()
+
+
 @smart_inference_mode()
 def run(
         weights=ROOT / 'yolov5s.pt',  # model path or triton URL
@@ -96,8 +105,6 @@ def run(
     is_url = source.lower().startswith(('rtsp://', 'rtmp://', 'http://', 'https://'))
     webcam = source.isnumeric() or source.endswith('.txt') or (is_url and not is_file)
     screenshot = source.lower().startswith('screen')
-    sound_path = 'C:/Users/Public/Capstone_AIHackathon/SoundSample/TTS/'
-    base_sound_path = 'C:/Users/Public/Capstone_AIHackathon/SoundSample/'
     #alert = AudioSegment.from_mp3('C:/Users/이승민/Desktop/Lorkhan/Capstone_AIHackathon/SoundSample/alert.mp3')
     #caution = AudioSegment.from_mp3('C:/Users/이승민/Desktop/Lorkhan/Capstone_AIHackathon/SoundSample/caution.mp3')
 
@@ -223,8 +230,9 @@ def run(
                 print(tempdangerlist)
                 if(tempdangerlist != danger_list):
                     # TTS 출력
-                    playsound(base_sound_path + 'alert.mp3')
-                    playsound(base_sound_path + 'caution.mp3')
+
+                    basesoundplay('alert')
+                    basesoundplay('caution')
                     for sound in tempdangerlist:
                         soundplay(sound)
 
