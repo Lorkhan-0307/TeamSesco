@@ -22,7 +22,7 @@ form_class = uic.loadUiType("BlackEyes.ui")[0]
 
 media_class = uic.loadUiType("MediaPlayer.ui")[0]
 
-video_path = 'C:/Users/Public/Capstone_AIHackathon/yolov5/data/'
+video_path = './data/'
 
 
 def uiUpdate():
@@ -70,11 +70,11 @@ class WindowClass(QMainWindow, form_class) :
 
 
     def button_FullVidSave(self):
-        os.system('cmd /c "cd C:/Users/Public/Capstone_AIHackathon/yolov5/runs/detect & Start ."')
+        os.system('cmd /c "cd runs/detect & Start ."')
         #os.system('cmd /c Start .')
 
     def button_DangerVidSave(self):
-        os.system('cmd /c "cd C:/Users/Public/Capstone_AIHackathon/yolov5/runs/savedanger & Start ."')
+        os.system('cmd /c "cd runs/savedanger & Start ."')
         #os.system('cmd /c Start .')
 
 
@@ -82,13 +82,13 @@ class WindowClass(QMainWindow, form_class) :
     # 비디오 선택
     def VideoSelect(self):
         if self.Video0.isChecked():
-            video_path = 'C:/Users/Public/Capstone_AIHackathon/yolov5/data/RecTest00'
+            video_path = 'data/RecTest00'
             print(video_path)
         elif self.Video1.isChecked():
-            video_path = 'C:/Users/Public/Capstone_AIHackathon/yolov5/data/RecTest01'
+            video_path = 'data/RecTest01'
             print(video_path)
         elif self.Video2.isChecked():
-            video_path = 'C:/Users/Public/Capstone_AIHackathon/yolov5/data/RecTest02'
+            video_path = 'data/RecTest02'
             print(video_path)
 
             # 영상 선택
@@ -96,13 +96,13 @@ class WindowClass(QMainWindow, form_class) :
     def button_Video_Input_Function(self):
         print("btn_2 Clicked")
         if self.Video0.isChecked():
-            video_path = 'C:/Users/Public/Capstone_AIHackathon/yolov5/data/RecTest00'
+            video_path = 'data/RecTest00'
             print(video_path)
         elif self.Video1.isChecked():
-            video_path = 'C:/Users/Public/Capstone_AIHackathon/yolov5/data/RecTest01'
+            video_path = 'data/RecTest01'
             print(video_path)
         elif self.Video2.isChecked():
-            video_path = 'C:/Users/Public/Capstone_AIHackathon/yolov5/data/RecTest02'
+            video_path = 'data/RecTest02'
             print(video_path)
         #print(f'cmd /c python yolov5/detect_modify.py --weights yolov5s.pt --img 640 --conf 0.25 --source ' + video_path)
         os.system(f'cmd /c python detect_modify.py --weights yolov5s.pt --img 640 --conf 0.25 --view-img --source ' + video_path)
